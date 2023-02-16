@@ -1,26 +1,36 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-body{
+body {
     width: 100vw;
     height: 100vh;
 }
 
-#fundo{
+#fundo {
     display: flex;
     justify-content: center;
     position: relative;
     top: 48vh;
 }
 
-#keyboard{
+#keyboard {
     border: 1px solid black;
     position: relative;
 }
 
-.tecla{
+.tecla {
     width: 25px;
     text-transform: lowercase;
+}
+
+#resultado {
+    background: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    font-size: 78px;
+    border: 2px solid black;
 }
