@@ -1,36 +1,37 @@
-const keyboard = "abcdefghijklmnopqrstuvwxyz"
+const keyboard = "opqrstuvwxyzabcdefghijklmn"
 const keyboardSeparado = keyboard.split("")
 const world = "eu"
 const teclas = document.querySelectorAll('.tecla')
+teclas.forEach((tecla, i) => {
+    tecla.innerText = keyboardSeparado[i]
+})
 let primeiraTecla = 0
 let resultadoAnterior = []
-const reducer = (accumulator, currentValue) => {
-    accumulator + currentValue
-}
+const span = document.querySelector('#resultado')
+var sum = 0
 
 teclas.forEach((tecla) => {
     tecla.addEventListener('click', (event) => {
-        const teclaClicada = event.target.innerText
-        const indice = keyboardSeparado.indexOf(teclaClicada)
-        
+        const letraClicada = event.target.innerText
+        const numeroDaLetra = keyboardSeparado.indexOf(letraClicada)
+
         if (primeiraTecla != null) {
-            const resultado = subtrair(primeiraTecla, indice)
-            console.log(`Do indice ${primeiraTecla} ate o ${indice} = ${resultado}`)
-            primeiraTecla = indice
+            sum = 0
+            const resultado = subtrair(primeiraTecla, numeroDaLetra)
+            console.log(`Do indice ${primeiraTecla} ate o ${numeroDaLetra} = ${resultado}`)
+            primeiraTecla = numeroDaLetra
             resultadoAnterior.push(resultado)
-            var sum = 0
             for (var i = 0; i < resultadoAnterior.length; i++) {
-                (sum += resultadoAnterior[i])
+                sum += resultadoAnterior[i];
             }
             console.log(`Tempo total: ${sum}`)
+            span.innerText = `${sum}`
         } else {
-            primeiraTecla = indice
+            primeiraTecla = numeroDaLetra
         }
     })
 
 })
-
-
 
 function subtrair(valor1, valor2) {
     return Math.abs(valor1 - valor2)
